@@ -1,44 +1,49 @@
-import { Campaign } from "@prisma/client";
+import { type NextPage } from "next";
+import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 
-const CampaignsPage = () => {
-  const [campaigns, setCampaigns] = useState<Campaign[]>([]);
-  const { address } = useAccount();
+const Home: NextPage = () => {
+  const { isConnected } = useAccount();
+
+  const [connected, setConnected] = useState(false);
 
   useEffect(() => {
-    const fetchCampaigns = async () => {
-      const res = await fetch(`/api/get-campaigns?creator=${address}`);
-      const { data: campaigns } = await res.json();
-      setCampaigns(campaigns);
-    };
-    fetchCampaigns();
-  }, [address]);
+    setConnected(isConnected);
+  }, [isConnected]);
 
   return (
     <>
-      <h1>Your campaigns</h1>
-      <div className="grid grid-cols-2 gap-6">
-        {campaigns.map((campaign) => (
-          <div className="card bg-base-100 shadow-xl" key={campaign.id}>
-            <div className="card-body">
-              <h2 className="card-title">{campaign.name}</h2>
+      <Head>
+        <title>Shortly</title>
+        <meta name="description" content="Web3 affiliate marketing" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-              <div className="card-actions">
-                <Link
-                  href={`/campaigns/${campaign.id}`}
-                  className="btn-primary btn border-none bg-our-green text-black hover:bg-our-green-dark"
-                >
-                  Go to campaign dashboard
-                </Link>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+      {connected ? (
+        <div className="mt-4 flex flex-col gap-4">
+          <Link
+            href="/new-campaign"
+            className="btn-primary btn border-none bg-our-green text-black hover:bg-our-green-dark"
+          >
+            Create a new campaign
+          </Link>
+
+          <Link
+            href="/campaigns"
+            className="btn-primary btn border-none bg-our-green text-black hover:bg-our-green-dark"
+          >
+            View all campaigns
+          </Link>
+        </div>
+      ) : (
+        <div className="mt-4">
+          <p>Please connect your wallet to get started!</p>
+        </div>
+      )}
     </>
   );
 };
 
-export default CampaignsPage;
+export default Home;
