@@ -1,6 +1,6 @@
 
 # Shortly
-  
+
 ## A Web3 Affiliate Marketing Platform
   
 Track, incentivize and reward your affiliates, DAO contributors and team to drive traffic through community generated content like never before.
@@ -8,7 +8,9 @@ Track, incentivize and reward your affiliates, DAO contributors and team to driv
 **[Website](https://shortlylisbon.webflow.io/)**・**[GitHub](https://github.com/kaymomin/shortly)**・**[Demo](https://shortly-liard.vercel.app/)**
   
   --------
-
+  ![screely-1684039810572](https://github.com/kaymomin/shortly/assets/44579545/7a8c4833-6e8e-45f5-88a1-50c39c981f3f)
+ --------
+# Features
 Shortly is a Web3 affiliate marketing platform that lets teams Track, incentivize and reward their affiliates, DAO contributors, and team for driving traffic through community-generated content.
 
 **1. Shorten and track your links like never before:** Generate short links for your affiliates, DAO members, and colleagues and track clicks, reach, and traffic with real-time analytics.
