@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["jsonProtocol"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Campaign {
+  id             Int             @id @default(autoincrement())
+  name           String
+  startDate      DateTime
+  endDate        DateTime
+  originalURL    String
+  budget         Float
+  paidOut        Boolean         @default(false)
+  clickTarget    Int
+  affiliateLinks AffiliateLink[]
+  creator        String
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+}
+
+// Model for the AffiliateLink entity
+model AffiliateLink {
+  id          Int      @id @default(autoincrement())
+  shortcode   String   @unique
+  originalURL String
+  clicks      Int      @default(0)
+  campaign    Campaign @relation(fields: [campaignId], references: [id])
+  campaignId  Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  assignee    String
+}
