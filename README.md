@@ -32,6 +32,7 @@ Shortly is a Web3 affiliate marketing platform that lets teams Track, incentiviz
 - Smart contract deployed on zkEVM testnet
 - Contract Address: 0x4e6a0019e44a3A611FD9D821cBd17A2e596A48CB
 - Link: https://testnet-zkevm.polygonscan.com/address/0x4e6a0019e44a3a611fd9d821cbd17a2e596a48cb
+- [Tweet](https://twitter.com/kayprasla/status/1657656294621302784?s=20)
 
 ## Linea
 - Smart contract deployed on linea testnet
